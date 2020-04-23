@@ -23,3 +23,5 @@ Route::get('lgas','LgaController@getAllLga');
     return response()->json(['msg'=>'Hellooooo bai']);
 });*/
 Route::get('states','LgaController@getAllStates');
+
+Route::get('lgsinstate/{state}','LgaController@getAllLgasInState');
