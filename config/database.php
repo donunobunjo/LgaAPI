@@ -1,12 +1,11 @@
 <?php
 
 use Illuminate\Support\Str;
-/*$test = getenv("CLEARDB_DATABASE_URL");
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$host = $url["host"] ?? null;
-$username = $url["user"] ?? null;
-$password = $url["pass"] ?? null;
-$database = substr($url["path"], 1);*/
+$urll = getenv("CLEARDB_DATABASE_URL");
+$host = parse_url($urll)["host"];
+$username = parse_url($urll)["user"];
+$password = parse_url($urll)["pass"];
+$database = substr(parse_url($urll)["path"],1);
 
 return [
 
@@ -51,24 +50,19 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            //'url' => env('DATABASE_URL'),
-            //'url' => $url,
+            'url' => env('DATABASE_URL'),
             //'host' => env('DB_HOST', '127.0.0.1'),
-            //'host' => $host,
-            'host' => getenv("DATABASE_URL") ? parse_url(getenv("CLEARDB_DATABASE_URL"))["host"] : '',
-            //'port' => env('DB_PORT', '3306'),
+            'host'=>$host,
+            'port' => env('DB_PORT', '3306'),
             //'database' => env('DB_DATABASE', 'forge'),
-            //'database' => $database,
-            'database' => getenv("DATABASE_URL") ? substr(parse_url(getenv("CLEARDB_DATABASE_URL"))["path"], 1) : '',
+            'database' => $database,
             //'username' => env('DB_USERNAME', 'forge'),
-            //'username' => $username,
-            'username' => getenv("DATABASE_URL") ? parse_url(getenv("CLEARDB_DATABASE_URL"))["user"] : '',
+            'username' => $username,
             //'password' => env('DB_PASSWORD', ''),
-            //'password' => $password,
-            'password' => getenv("DATABASE_URL") ? parse_url(getenv("CLEARDB_DATABASE_URL"))["pass"] : '',
+            'password' => $password,
             'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
