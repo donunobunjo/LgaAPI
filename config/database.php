@@ -56,7 +56,7 @@ return [
             //'host' => env('DB_HOST', '127.0.0.1'),
             //'host' => $host,
             'host' => getenv("DATABASE_URL") ? parse_url(getenv("CLEARDB_DATABASE_URL"))["host"] : '',
-            'port' => env('DB_PORT', '3306'),
+            //'port' => env('DB_PORT', '3306'),
             //'database' => env('DB_DATABASE', 'forge'),
             //'database' => $database,
             'database' => getenv("DATABASE_URL") ? substr(parse_url(getenv("CLEARDB_DATABASE_URL"))["path"], 1) : '',
