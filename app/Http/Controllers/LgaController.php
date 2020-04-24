@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Response;
 class LgaController extends Controller
 {
     public function getAllLga(){
-        $lgas = Lga::all();
+        //$lgas = Lga::all();
+        $lgas= Lga::select('lga','state')->get()->toArray();
         return response()->json($lgas);
     }
     public function getAllStates(){
@@ -21,7 +22,7 @@ class LgaController extends Controller
     public function getAllLgasInState($state){
        //return Response::json(['msg'=>'wazzz upppp']);
        ///return Response::json($state);
-       $lgas = Lga::where('state',$state)->get();
+       $lgas = Lga::select('lga','state')->where('state',$state)->get();
        return response()->json($lgas);
     }
 }
