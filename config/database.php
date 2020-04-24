@@ -52,7 +52,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             //'url' => env('DATABASE_URL'),
-            'url' => $url,
+            //'url' => $url,
             //'host' => env('DB_HOST', '127.0.0.1'),
             //'host' => $host,
             'host' => getenv("DATABASE_URL") ? parse_url(getenv("CLEARDB_DATABASE_URL"))["host"] : '',
